@@ -6,27 +6,33 @@
 </head>
 
 <body>
-    <label>ToDoApplication</label>
+    <label id="ToDo">ToDoApplication</label>
     <div>
-        <input id="CrtInpt" name="what nee to do?" type="text">
-        <input id="CrtDate" name="mm/dd/yyyy" type="date">
+        <input id="CrtInpt" type="text" value="what need to do?">
+        <input id="CrtDate" type="date" value="mm/dd/yyyy">
         <button id="Add">Add ToDo</button>
     </div>
     <div>
         <label for="SrchInpt">Filter by Text:</label>
-        <input type="text" name="search ToDo" id="SrchInpt">
+        <input type="text" id="SrchInpt" value="search ToDo">
         <label for="SrchDate">Filter by Date:</label>
-        <input type="text" name="mm/dd/yyyy" id="SrchDate">
+        <input type="date" id="SrchDate" value="mm/dd/yyyy">
     </div>
     <div>
         <button id="SrtByAlph">Sort by Alphabet</button>
         <button id="SrtByDate">Sort by Date</button>
         <button id="SrtReset">Reser</button>
     </div>
-    <form>
-        <label for="Number"></label>
-
-    </form>
+    <template id="Item">
+        <div><label><textarea><label><button></button><button></button></div>
+    </template>
+    <div>
+        <label for="Item" id="Number">Number</label>
+        <textarea id="Text" cols="2" rows="1"></textarea>
+        <label for="Item" id="Date">Date</label>
+        <button>Not complete</button>
+        <button>Delete</button>
+    </div>
 </body>
 
 </html>

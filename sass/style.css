@@ -1,5 +1,18 @@
 body {
-  background: -webkit-gradient(linear, left top, right bottom, from(white), to(#3A3F4D));
-  background: linear-gradient(to bottom right, white, #3A3F4D);
+  background: -webkit-gradient(linear, left top, right bottom, from(#3a3f4d65), to(black));
+  background: linear-gradient(to bottom right, #3a3f4d65, black);
+}
+
+body #CrtInpt {
+  border: 4px solid red;
+}
+
+body #SrchInpt {
+  border: 4px solid black;
+}
+
+body button {
+  border: 4px solid #10c010;
+  margin: 5px;
 }
 /*# sourceMappingURL=style.css.map */
