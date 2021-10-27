@@ -1,0 +1,23 @@
+body {
+  background: linear-gradient(to bottom right, #726868, #000);
+  background-repeat: no-repeat;
+}
+
+button {
+  border: solid #5dee38;
+  margin-right: 10px;
+}
+
+input {
+  margin-right: 10px;
+}
+
+#CrtInpt {
+  border: solid red;
+}
+
+#SrchInpt {
+  border: solid;
+}
+
+/*# sourceMappingURL=style.css.map */

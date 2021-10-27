@@ -1,38 +1,32 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="sass/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoApplication</title>
 </head>
-
 <body>
     <label id="ToDo">ToDoApplication</label>
     <div>
-        <input id="CrtInpt" type="text" value="what need to do?">
-        <input id="CrtDate" type="date" value="mm/dd/yyyy">
+        <input placeholder="What need to do?" id="CrtInpt" type="text" value="">
+        <input id="CrtDate" type="date" value="">
         <button id="Add">Add ToDo</button>
     </div>
     <div>
         <label for="SrchInpt">Filter by Text:</label>
-        <input type="text" id="SrchInpt" value="search ToDo">
+        <input placeholder="Search ToDo" type="text" id="SrchInpt" value="">
         <label for="SrchDate">Filter by Date:</label>
-        <input type="date" id="SrchDate" value="mm/dd/yyyy">
+        <input type="date" id="SrchDate" value="">
     </div>
     <div>
         <button id="SrtByAlph">Sort by Alphabet</button>
         <button id="SrtByDate">Sort by Date</button>
         <button id="SrtReset">Reser</button>
     </div>
-    <template id="Item">
-        <div><label><textarea><label><button></button><button></button></div>
-    </template>
-    <div>
-        <label for="Item" id="Number">Number</label>
-        <textarea id="Text" cols="2" rows="1"></textarea>
-        <label for="Item" id="Date">Date</label>
-        <button>Not complete</button>
-        <button>Delete</button>
-    </div>
-</body>
+    <form action="#">
 
+    </form>    
+</body>
 </html>
