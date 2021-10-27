@@ -1,14 +1,40 @@
 body
-    background: linear-gradient(to bottom right, #726868, #000)
-    background-repeat: no-repeat 
-button
+    background: linear-gradient(to bottom right, #a8a7a7, #3a3a3a)
+    background-repeat: no-repeat
+    width: 600px
+    position: relative
+    left: 35%
+button:not([class="ListBtn"])
     border: solid #5dee38
     margin-right: 10px
+    padding: 2px
+    transition-duration: 1s
+button:not([class="ListBtn"]):hover
+    background: #a1f1ff
+button:not([class="ListBtn"]):focus
+    background: #a1d2ff
 input
     margin-right: 10px
+    padding: 2px
 #ToDo
-     
+    position: relative
+    left: 40% 
 #CrtInpt
     border: solid red
 #SrchInpt
     border: solid
+#ToDos
+    border: solid red
+    color: #ffffff
+    label
+        padding: 3px
+#Num
+    width: 10px
+    background: green
+    box-sizing: border-box
+#Do
+    width: 400px
+    background: blue
+    box-sizing: border-box
+#Date
+    width: 40px
