@@ -44,11 +44,11 @@ input {
   border: solid;
 }
 
-#ToDos {
+.ToDos {
   border: solid red;
   color: #ffffff;
 }
-#ToDos label {
+.ToDos label {
   padding: 3px;
 }
 
