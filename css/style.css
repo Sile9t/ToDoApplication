@@ -1,3 +1,7 @@
+* {
+  padding: 2px;
+}
+
 body {
   background: linear-gradient(to bottom right, #a8a7a7, #3a3a3a);
   background-repeat: no-repeat;
@@ -9,21 +13,18 @@ body {
 button:not([class=ListBtn]) {
   border: solid #5dee38;
   margin-right: 10px;
-  padding: 2px;
-  transition-duration: 1s;
 }
 
 button:not([class=ListBtn]):hover {
-  background: #a1f1ff;
+  background: #82ecff;
 }
 
-button:not([class=ListBtn]):focus {
-  background: #a1d2ff;
+button:not([class=ListBtn]):focus:hover {
+  background: #5dadf8;
 }
 
 input {
   margin-right: 10px;
-  padding: 2px;
 }
 
 #ToDo {
@@ -54,7 +55,8 @@ input {
 }
 
 #Do {
-  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
   background: blue;
   box-sizing: border-box;
 }
