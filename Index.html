@@ -9,40 +9,41 @@
 </head>
 <body>
     <div class="wrapper">
-    <form action="#" enctype="multipart/form-data"></form>
-    <label id="ToDo">ToDoApplication</label>
-    <div>
-        <input placeholder="What need to do?" id="CrtInpt" type="text" value="">
-        <input id="CrtDate" type="date" value="">
-        <button id="Add">Add ToDo</button>
-    </div>
-    <div>
-        <label for="SrchInpt">Filter by Text:</label>
-        <input placeholder="Search ToDo" type="text" id="SrchInpt" value="">
-        <label for="SrchDate">Filter by Date:</label>
-        <input type="date" id="SrchDate" value="">
-    </div>
-    <div>
-        <button id="SrtByAlph">Sort by Alphabet</button>
-        <button id="SrtByDate">Sort by Date</button>
-        <button id="SrtReset">Reser</button>
-    </div>
-    <template class="ToDoEl">
-        <div id="ToDos">
+        <label id="ToDo">ToDoApplication</label>
+        <div>
+            <form action="http://127.0.0.1:5500/Index.html" method="get"></form>
+            <input placeholder="What need to do?" id="CrtInpt" type="text" value="">
+            <input id="CrtDate" type="date" value="">
+            <button id="Add" type="submit">Add ToDo</button>
+        </div>
+        <div>
+            <label for="SrchInpt">Filter by Text:</label>
+            <input placeholder="Search ToDo" type="text" id="SrchInpt" value="">
+            <label for="SrchDate">Filter by Date:</label>
+            <input type="date" id="SrchDate" value="">
+        </div>
+        <div>
+            <button id="SrtByAlph">Sort by Alphabet</button>
+            <button id="SrtByDate">Sort by Date</button>
+            <button id="SrtReset">Reser</button>
+        </div>
+        <template id="ToDoEl">
+            <div class="ToDos">
+                <label id="Num">Num</label>
+                <label id="Do">Text</label>
+                <label id="Date">Date</label>
+                <button id="Complete" type="submit" class="ListBtn">Not complete</button>
+                <button id="Delete" class="ListBtn">Delete</button>
+            </div>
+        </template>
+        <div class="ToDos">
             <label id="Num">Num</label>
             <label id="Do">Text</label>
             <label id="Date">Date</label>
-            <button id="Complete" type="submit" class="ListBtn">Not complete</button>
+            <button id="Complete" class="ListBtn">Not complete</button>
             <button id="Delete" class="ListBtn">Delete</button>
         </div>
-    </template>
-    <div class="ToDos">
-        <label id="Num">Num</label>
-        <label id="Do">Text</label>
-        <label id="Date">Date</label>
-        <button id="Complete" type="submit" class="ListBtn">Not complete</button>
-        <button id="Delete" class="ListBtn">Delete</button>
-    </div>
     </div>    
+    <script src="js/index.js"></script>
 </body>
 </html>
