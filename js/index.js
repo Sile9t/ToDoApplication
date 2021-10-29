@@ -27,9 +27,3 @@ for (let i=0;i<mas.length;i++){
     El = t.content.cloneNode(true);
     list.append(El);
 }
-
-/*Num.textContent = '1';
-Do.textContent = 'sgsggs';
-Dt.textContent = '11.11.1111';
-El = t.content.cloneNode(true);
-list.append(El);*/
