@@ -65,7 +65,8 @@ input {
 }
 
 #Date {
-  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
 }
 
 /*# sourceMappingURL=style.css.map */
