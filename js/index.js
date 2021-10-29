@@ -18,6 +18,8 @@ form.addEventListener('submit',function() {
     mas.push([CrtInpt.Value,CrtDate.Value]);
 });
 
+mas.push(['sgawgag','11.11.1111']); 
+
 for (let i=0;i<mas.length;i++){
     Num.textContent = i+1;
     Do.textContent = mas[i][0];
