@@ -16,4 +16,5 @@ form.addEventListener('submit',function() {
     Do.textContent = CrtInpt.Value;
     Dt.textContent = CrtDate.Value;
     wrap.append(El);
+    alert(El);
 });
