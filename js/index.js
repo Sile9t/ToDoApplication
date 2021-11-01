@@ -33,9 +33,10 @@ let AddToList = function (t,d){
 form.addEventListener('submit',function(e) {
     e.preventDefault(); 
     if (list.childElementCount != 0) {
-        let del = document.getElementsByClassName('ToDos');
+        list.remove();
+        /*let del = document.getElementsByClassName('ToDos');
         console.log(del);
-        del.remove();
+        del.remove();*/
     }
     AddToList(CrtInpt.value,CrtDate.value);
     //console.log(list.firstElementChild.firstElementChild.nextElementSibling.innerHTML);
