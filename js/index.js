@@ -32,6 +32,12 @@ let AddToList = function (t,d){
 
 form.addEventListener('submit',function(e) {
     e.preventDefault(); 
+    if (list.childElementCount != 0) {
+        let del = document.getElementsByClassName('ToDos');
+        console.log(del);
+        del.remove();
+    }
     AddToList(CrtInpt.value,CrtDate.value);
-    console.log(list.firstElementChild.firstChild);
+    //console.log(list.firstElementChild.firstElementChild.nextElementSibling.innerHTML);
+    //console.log(list.remove(list.firstElementChild.firstElementChild));
 });
