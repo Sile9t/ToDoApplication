@@ -14,7 +14,7 @@ const DelBtn = ToDoEl.content.querySelector('#Delete');
 let mas = [];
 let El;
 
-let UpdateList = function (){
+let UpdateList = function () {
     if (list.childElementCount != 0) {list.innerHTML = '';}
     for (let i=0;i<mas.length;i++){
         Num.textContent = i+1;
@@ -25,7 +25,7 @@ let UpdateList = function (){
     }
 }
 
-let AddToList = function (t,d){
+let AddToList = function (t,d) {
     let el = { text: t, date: d};
     mas.push(el);
     UpdateList();
@@ -39,6 +39,16 @@ form.addEventListener('submit', function(e) {
 });
 
 ComBtn.addEventListener('click', function() {
-    if (ComBtn.innerHTML == 'Complete') {ComBtn.innerHTML = 'Not complete';}
-    else {ComBtn.innerHTML = 'Complete';}
+    if (this.innerHTML == 'Complete') {this.innerHTML = 'Not complete';}
+    else {this.innerHTML = 'Complete';}
+});
+
+DelBtn.addEventListener('click', function() {
+    if (this.parentElement.lastElementChild.prevElementSibling.innerHTML == 'Complete') {
+        for (let i = this.parentElement.firstElementChild.innerHTML - 1;i<mas.length;i++){
+            if (i<mas.length) {mas[i].text = mas[i+1].text; mas[i].date=mas[i+1].date;}
+            else {mas.pop();}
+        }
+    }
+    else {prompt('ToDo need to be completed!');}
 });
