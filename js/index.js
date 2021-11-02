@@ -49,6 +49,7 @@ DelBtn.addEventListener('click', function() {
             if (i<mas.length) {mas[i].text = mas[i+1].text; mas[i].date=mas[i+1].date;}
             else {mas.pop();}
         }
+        UpdateList();
     }
     else {prompt('ToDo need to be completed!');}
 });
