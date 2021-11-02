@@ -6,8 +6,8 @@ const CrtDate = document.querySelector('#CrtDate');
 
 const ToDoEl = document.querySelector('#ToDoEl');
 const Num = ToDoEl.content.querySelector('label');
-const Do = ToDoEl.content.querySelector('#Do');
-const Dt = ToDoEl.content.querySelector('#Date');
+const DoText = ToDoEl.content.querySelector('#Do');
+const Dodate = ToDoEl.content.querySelector('#Date');
 const ComBtn = ToDoEl.content.querySelector('#Complete');
 const DelBtn = ToDoEl.content.querySelector('#Delete');
 
@@ -18,15 +18,15 @@ let UpdateList = function () {
     if (list.childElementCount != 0) {list.innerHTML = '';}
     for (let i=0;i<mas.length;i++){
         Num.textContent = i+1;
-        Do.textContent = mas[i].text;
-        Dt.textContent = mas[i].date;
+        DoText.textContent = mas[i].text;
+        Dodate.textContent = mas[i].date;
         El = ToDoEl.content.cloneNode(true);
         list.append(El);
     }
 }
 
-let AddToList = function (t,d) {
-    let el = { text: t, date: d};
+let AddToList = function (txt,dte) {
+    let el = { text: txt, date: dte};
     mas.push(el);
     UpdateList();
 }
