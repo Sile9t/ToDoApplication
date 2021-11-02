@@ -15,6 +15,7 @@ let mas = [];
 let El;
 
 let UpdateList = function (){
+    if (list.childElementCount != 0) {list.innerHTML = '';}
     for (let i=0;i<mas.length;i++){
         Num.textContent = i+1;
         Do.textContent = mas[i].text;
@@ -30,15 +31,14 @@ let AddToList = function (t,d){
     UpdateList();
 }
 
-form.addEventListener('submit',function(e) {
+form.addEventListener('submit', function(e) {
     e.preventDefault(); 
-    if (list.childElementCount != 0) {
-        list.remove();
-        /*let del = document.getElementsByClassName('ToDos');
-        console.log(del);
-        del.remove();*/
-    }
     AddToList(CrtInpt.value,CrtDate.value);
     //console.log(list.firstElementChild.firstElementChild.nextElementSibling.innerHTML);
     //console.log(list.remove(list.firstElementChild.firstElementChild));
+});
+
+ComBtn.addEventListener('click', function() {
+    if (ComBtn.innerHTML == 'Complete') {ComBtn.innerHTML = 'Not complete';}
+    else {ComBtn.innerHTML = 'Complete';}
 });
