@@ -79,13 +79,21 @@ let DelEl = function(Del) {
 
 SrtByAlph.onclick = function() {
     let Mas1 = Mas.slice();
-    Mas1 = Mas1.sort(item => item.text);
+    Mas1 = Mas1.sort(function(a,b) {
+        if (a.text>b.text) return 1;
+        else if (a.text<b.text) return -1;
+        else return 0;
+    });
     UpdateList(Mas1);
 }
 
 SrtByDate.onclick = function() {
     let Mas1 = Mas.slice();
-    Mas1 = Mas1.sort((a,b) => a.date - b.date);
+    Mas1 = Mas1.sort(function(a,b) {
+        if (a.date>b.date) return 1;
+        else if (a.date<b.date) return -1;
+        else return 0;
+    });
     UpdateList(Mas1);
 }
 
