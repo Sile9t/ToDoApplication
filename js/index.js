@@ -4,10 +4,14 @@ const form = document.querySelector('form');
 const CrtInpt = document.querySelector('#CrtInpt');
 const CrtDate = document.querySelector('#CrtDate');
 
-let mas = [];
+const SrtByAlph = document.querySelector('#SrtByAlph');
+const SrtByDate = document.querySelector('#SrtByDate');
+const SrtReset = document.querySelector('#SrtReset');
+
+let Mas = [];
 let El;
 
-let UpdateList = function () {
+let UpdateList = function (mas) {
     if (list.childElementCount != 0) {list.innerHTML = '';}
     for (let i=0;i<mas.length;i++){
         let div = document.createElement('div');
@@ -37,8 +41,8 @@ let UpdateList = function () {
 
 let AddToList = function (txt,dte) {
     let el = { text: txt, date: dte};
-    mas.push(el);
-    UpdateList();
+    Mas.push(el);
+    UpdateList(Mas);
 }
 
 form.addEventListener('submit', function(e) {
@@ -64,11 +68,27 @@ let DelEl = function(Del) {
     if (Del.parentElement.lastElementChild.prevElementSibling.innerHTML == 'Complete'){
         console.log(Del.parentElement.lastElementChild.prevElementSibling);
         console.log(Del.parentElement.firstElementChild.innerHTML);
-        for (let i = Number(Del.parentElement.firstElementChild.innerHTML) - 1;i<mas.length;i++){
-            if (i<mas.length) {mas[i].text = mas[i+1].text; mas[i].date=mas[i+1].date;}
-            else {mas.pop();}
+        for (let i = Number(Del.parentElement.firstElementChild.innerHTML) - 1;i<Mas.length;i++){
+            if (i<Mas.length) {Mas[i].text = Mas[i+1].text; Mas[i].date=Mas[i+1].date;}
+            else {Mas.pop();}
         }
-        UpdateList();
+        UpdateList(Mas);
     }
     else {prompt('ToDo need to be completed!');}
+}
+
+SrtByAlph.onclick = function() {
+    let Mas1 = Mas.slice();
+    Mas1 = Mas1.sort(item => item.text);
+    UpdateList(Mas1);
+}
+
+SrtByDate.onclick = function() {
+    let Mas1 = Mas.slice();
+    Mas1 = Mas1.sort((a,b) => a.date - b.date);
+    UpdateList(Mas1);
+}
+
+SrtReset.onclick = function() {
+    UpdateList(Mas);
 }
