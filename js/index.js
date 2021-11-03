@@ -28,13 +28,13 @@ let UpdateList = function () {
         let ComBtn = document.createElement('button');
         ComBtn.id = 'Complete';
         ComBtn.className = 'ListBtn';
-        ComBtn.onclick = function() {
+        /*ComBtn.onclick = function() {
             if (this.innerHTML == 'Complete') {this.innerHTML = ''}
-        };
+        };*/
         let DelBtn = document.createElement('button');
         DelBtn.id = 'Delete';
         DelBtn.className = 'ListBtn';
-        DelBtn.onclick = function() {
+        /*DelBtn.onclick = function() {
             if (ComBtn.innerHTML == 'Complete') {
                 for (let i = this.parentElement.firstElementChild.innerHTML - 1;i<mas.length;i++){
                     if (i<mas.length) {mas[i].text = mas[i+1].text; mas[i].date = mas[i+1].date;}
@@ -43,7 +43,7 @@ let UpdateList = function () {
                 UpdateList();
             }
             else {alert('ToDo need to be completed!');}
-        };
+        };*/
         div.append(Num);
         div.append(DoText);
         div.append(DoDate);
@@ -70,7 +70,7 @@ form.addEventListener('submit', function(e) {
     //console.log(list.remove(list.firstElementChild.firstElementChild));
 });
 
-ComBtn.addEventListener('click', function() {
+/*ComBtn.addEventListener('click', function() {
     if (this.innerHTML == 'Complete') {this.innerHTML = 'Not complete';}
     else {this.innerHTML = 'Complete';}
 });
@@ -84,4 +84,27 @@ DelBtn.addEventListener('click', function() {
         UpdateList();
     }
     else {prompt('ToDo need to be completed!');}
-});
+});*/
+
+list.onclick = function(event) {
+    let target = event.target;
+    if (target.id = 'Complete') {ChangeCom(target);}
+    else if (target.id = 'Delete') {DelEl(target);}
+    else return;
+}
+
+let ChangeCom = function(Com) {
+    if (Com.innerHTML = 'Complete') {Com.innerHTML = 'Not complete';}
+    else {Com.innerHTML = 'Complete';}
+}
+
+let DelEl = function(Del) {
+    if (Del.parentElement.lastElementChild.prevElementSibling.innerHTML = 'Complete'){
+        for (let i = Del.parentElement.firstElementChild.innerHTML - 1;i<mas.length;i++){
+            if (i<mas.length) {mas[i].text = mas[i+1].text; mas[i].date=mas[i+1].date;}
+            else {mas.pop();}
+        }
+        UpdateList();
+    }
+    else {prompt('ToDo need to be completed!');}
+}
