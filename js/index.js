@@ -4,6 +4,9 @@ const form = document.querySelector('form');
 const CrtInpt = document.querySelector('#CrtInpt');
 const CrtDate = document.querySelector('#CrtDate');
 
+const SrchInpt = document.querySelector('#SrchInpt');
+const SrchDate = document.querySelector('#SrchDate');
+
 const SrtByAlph = document.querySelector('#SrtByAlph');
 const SrtByDate = document.querySelector('#SrtByDate');
 const SrtReset = document.querySelector('#SrtReset');
@@ -74,7 +77,33 @@ let DelEl = function(Del) {
         }
         UpdateList(Mas);
     }
-    else {prompt('ToDo need to be completed!');}
+    else {alert('ToDo need to be completed!');}
+}
+
+SrchInpt.onblur = function() {
+    let inp = SrchInpt.value;
+    if (inp != ''){
+        let Mas1 = [];
+        for (let i=0;i<Mas.length;i++){
+            if (Mas[i].text == inp) {Mas1.push(Mas[i]);}
+        }
+        if (Mas1 != '') {UpdateList(Mas1);}
+        else {alert('No elements like this.');}
+    }
+    else {UpdateList(Mas); alert('No elements like this.');}
+}
+
+SrchDate.onblur = function() {
+    let inp = SrchDate.value;
+    if (inp != ''){
+        let Mas1 = [];
+        for (let i=0;i<Mas.length;i++){
+            if (Mas[i].date == inp) {Mas1.push(Mas[i]);}
+        }
+        if (Mas1 != '') {UpdateList(Mas1);}
+        else {alert('No elements like this.');}
+    }
+    else {UpdateList(Mas); alert('No elements like this.');}
 }
 
 SrtByAlph.onclick = function() {
