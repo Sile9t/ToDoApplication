@@ -50,8 +50,8 @@ form.addEventListener('submit', function(e) {
     AddToList(CrtInpt.value,CrtDate.value);
 });
 
-list.onclick = function(event) {
-    let target = event.target;
+list.onclick = function(e) {
+    let target = e.target;
     if (target.id == 'Complete') {ChangeCom(target);}
     else if (target.id == 'Delete') {DelEl(target);}
     else return;
