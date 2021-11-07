@@ -66,13 +66,9 @@ let ChangeCom = function(Com) {
 }
 
 let DelEl = function(Del) {
-    console.log(Del.parentElement.lastElementChild.prevElementSibling.id);
-    console.log(Del.parentElement.firstElementChild.innerHTML);
-    if (Del.parentElement.lastElementChild.prevElementSibling.innerHTML == 'Complete'){
-        console.log(Del.parentElement.lastElementChild.prevElementSibling);
-        console.log(Del.parentElement.firstElementChild.innerHTML);
+    if (Del.parentElement.lastElementChild.previousSibling.innerHTML == 'Complete'){
         for (let i = Number(Del.parentElement.firstElementChild.innerHTML) - 1;i<Mas.length;i++){
-            if (i<Mas.length) {Mas[i].text = Mas[i+1].text; Mas[i].date=Mas[i+1].date;}
+            if (i<Mas.length-1) {Mas[i].text = Mas[i+1].text; Mas[i].date=Mas[i+1].date;}
             else {Mas.pop();}
         }
         UpdateList(Mas);
