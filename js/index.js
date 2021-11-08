@@ -11,6 +11,9 @@ const SrtByAlph = document.querySelector('#SrtByAlph');
 const SrtByDate = document.querySelector('#SrtByDate');
 const SrtReset = document.querySelector('#SrtReset');
 
+const EmptyMasMsg = document.createElement('label');
+EmptyMasMsg.innerHTML    = 'No elements like this';
+
 let Mas = [];
 let El;
 
@@ -76,30 +79,30 @@ let DelEl = function (Del) {
     else { alert('ToDo need to be completed!'); }
 }
 
-SrchInpt.onblur = function () {
+SrchInpt.onchange = function (e) {
     let inp = SrchInpt.value;
-    if (inp != '') {
+    if ((inp != '') && (e.code = 'Enter')) {
         let Mas1 = [];
         for (let i = 0; i < Mas.length; i++) {
             if (Mas[i].text == inp) { Mas1.push(Mas[i]); }
         }
         if (Mas1 != '') { UpdateList(Mas1); }
-        else { alert('No elements like this.'); }
+        else { UpdateList(Mas1); list.append(EmptyMasMsg); }
     }
-    else { UpdateList(Mas); alert('No elements like this.'); }
+    else { UpdateList(Mas); }
 }
 
-SrchDate.onblur = function () {
+SrchDate.onkeydown = function (e) {
     let inp = SrchDate.value;
-    if (inp != '') {
+    if ((inp != '') && (e.code == 'Enter')) {
         let Mas1 = [];
         for (let i = 0; i < Mas.length; i++) {
             if (Mas[i].date == inp) { Mas1.push(Mas[i]); }
         }
         if (Mas1 != '') { UpdateList(Mas1); }
-        else { alert('No elements like this.'); }
+        else { UpdateList(Mas1); list.append(EmptyMasMsg); }
     }
-    else { UpdateList(Mas); alert('No elements like this.'); }
+    else { UpdateList(Mas); }
 }
 
 SrtByAlph.onclick = function () {
