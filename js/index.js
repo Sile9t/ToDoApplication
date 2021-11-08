@@ -15,12 +15,12 @@ let Mas = [];
 let El;
 
 let UpdateList = function (mas) {
-    if (list.childElementCount != 0) {list.innerHTML = '';}
-    for (let i=0;i<mas.length;i++){
+    if (list.childElementCount != 0) { list.innerHTML = ''; }
+    for (let i = 0; i < mas.length; i++) {
         let div = document.createElement('div');
         div.className = 'ToDos';
         let Num = document.createElement('label');
-        Num.innerHTML = i+1;
+        Num.innerHTML = i + 1;
         let DoText = document.createElement('label');
         DoText.innerHTML = mas[i].text;
         let DoDate = document.createElement('label');
@@ -42,90 +42,86 @@ let UpdateList = function (mas) {
     }
 }
 
-let AddToList = function (txt,dte) {
-    let el = { text: txt, date: dte};
+let AddToList = function (txt, dte) {
+    let el = { text: txt, date: dte };
     Mas.push(el);
     UpdateList(Mas);
 }
 
-form.addEventListener('submit', function(e) {
-    e.preventDefault(); 
-    AddToList(CrtInpt.value,CrtDate.value);
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    AddToList(CrtInpt.value, CrtDate.value);
 });
 
-list.onclick = function(e) {
+list.onclick = function (e) {
     let target = e.target;
-    if (target.id == 'Complete') {ChangeCom(target);}
-    else if (target.id == 'Delete') {DelEl(target);}
+    if (target.id == 'Complete') { ChangeCom(target); }
+    else if (target.id == 'Delete') { DelEl(target); }
     else return;
 }
 
-let ChangeCom = function(Com) {
-    if (Com.innerHTML == 'Complete') {Com.innerHTML = 'Not complete';}
-    else {Com.innerHTML = 'Complete';}
+let ChangeCom = function (Com) {
+    if (Com.innerHTML == 'Complete') { Com.innerHTML = 'Not complete'; }
+    else { Com.innerHTML = 'Complete'; }
 }
 
-let DelEl = function(Del) {
-    console.log(Del.parentElement.lastElementChild.prevElementSibling.id);
-    console.log(Del.parentElement.firstElementChild.innerHTML);
-    if (Del.parentElement.lastElementChild.prevElementSibling.innerHTML == 'Complete'){
-        console.log(Del.parentElement.lastElementChild.prevElementSibling);
-        console.log(Del.parentElement.firstElementChild.innerHTML);
-        for (let i = Number(Del.parentElement.firstElementChild.innerHTML) - 1;i<Mas.length;i++){
-            if (i<Mas.length) {Mas[i].text = Mas[i+1].text; Mas[i].date=Mas[i+1].date;}
-            else {Mas.pop();}
+let DelEl = function (Del) {
+    if (Del.parentElement.lastElementChild.previousSibling.innerHTML == 'Complete') {
+        for (let i = Number(Del.parentElement.firstElementChild.innerHTML) - 1; i < Mas.length; i++) {
+            if (i < Mas.length - 1) { Mas[i].text = Mas[i + 1].text; Mas[i].date = Mas[i + 1].date; }
+            else { Mas.pop(); }
         }
         UpdateList(Mas);
     }
-    else {alert('ToDo need to be completed!');}
+    else { alert('ToDo need to be completed!'); }
 }
 
-SrchInpt.onblur = function() {
+SrchInpt.onblur = function () {
     let inp = SrchInpt.value;
-    if (inp != ''){
+    if (inp != '') {
         let Mas1 = [];
-        for (let i=0;i<Mas.length;i++){
-            if (Mas[i].text == inp) {Mas1.push(Mas[i]);}
+        for (let i = 0; i < Mas.length; i++) {
+            if (Mas[i].text == inp) { Mas1.push(Mas[i]); }
         }
-        if (Mas1 != '') {UpdateList(Mas1);}
-        else {alert('No elements like this.');}
+        if (Mas1 != '') { UpdateList(Mas1); }
+        else { alert('No elements like this.'); }
     }
-    else {UpdateList(Mas); alert('No elements like this.');}
+    else { UpdateList(Mas); alert('No elements like this.'); }
 }
 
-SrchDate.onblur = function() {
+SrchDate.onblur = function () {
     let inp = SrchDate.value;
-    if (inp != ''){
+    if (inp != '') {
         let Mas1 = [];
-        for (let i=0;i<Mas.length;i++){
-            if (Mas[i].date == inp) {Mas1.push(Mas[i]);}
+        for (let i = 0; i < Mas.length; i++) {
+            if (Mas[i].date == inp) { Mas1.push(Mas[i]); }
         }
-        if (Mas1 != '') {UpdateList(Mas1);}
-        else {alert('No elements like this.');}
+        if (Mas1 != '') { UpdateList(Mas1); }
+        else { alert('No elements like this.'); }
     }
-    else {UpdateList(Mas); alert('No elements like this.');}
+    else { UpdateList(Mas); alert('No elements like this.'); }
 }
 
-SrtByAlph.onclick = function() {
+SrtByAlph.onclick = function () {
     let Mas1 = Mas.slice();
-    Mas1 = Mas1.sort(function(a,b) {
-        if (a.text>b.text) return 1;
-        else if (a.text<b.text) return -1;
+    Mas1 = Mas1.sort(function (a, b) {
+        if (a.text > b.text) return 1;
+        else if (a.text < b.text) return -1;
         else return 0;
     });
     UpdateList(Mas1);
 }
 
-SrtByDate.onclick = function() {
+SrtByDate.onclick = function () {
     let Mas1 = Mas.slice();
-    Mas1 = Mas1.sort(function(a,b) {
-        if (a.date>b.date) return 1;
-        else if (a.date<b.date) return -1;
+    Mas1 = Mas1.sort(function (a, b) {
+        if (a.date > b.date) return 1;
+        else if (a.date < b.date) return -1;
         else return 0;
     });
     UpdateList(Mas1);
 }
 
-SrtReset.onclick = function() {
+SrtReset.onclick = function () {
     UpdateList(Mas);
 }
