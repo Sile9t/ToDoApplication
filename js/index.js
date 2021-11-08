@@ -12,7 +12,7 @@ const SrtByDate = document.querySelector('#SrtByDate');
 const SrtReset = document.querySelector('#SrtReset');
 
 const EmptyMasMsg = document.createElement('label');
-EmptyMasMsg.innerHTML    = 'No elements like this';
+EmptyMasMsg.innerHTML = 'No elements like this';
 
 let Mas = [];
 let El;
