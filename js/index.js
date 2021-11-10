@@ -88,16 +88,16 @@ let DelEl = function (Del) {
     else { alert('ToDo need to be completed!'); }
 }
 
-let ElSort = function (inp) {
+let ElSort = function (srtType) {
     let Mas1 = Mas.slice();
-    if (inp == 'text') {
+    if (srtType == 'text') {
         Mas1 = Mas1.sort(function (a, b) {
             if (a.text > b.text) return 1;
             else if (a.text < b.text) return -1;
             else return 0;
         });
     }
-    else if (inp == 'date') {
+    else if (srtType == 'date') {
         Mas1 = Mas1.sort(function (a, b) {
             if (a.date > b.date) return 1;
             else if (a.date < b.date) return -1;
