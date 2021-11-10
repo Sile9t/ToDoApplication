@@ -64,8 +64,8 @@ list.onclick = function (e) {
 }
 
 let ChangeCom = function (Com) {
-    if (Com.innerHTML == 'Complete') { Com.innerHTML = 'Not complete'; }
-    else { Com.innerHTML = 'Complete'; }
+    if (Com.innerHTML == 'Complete') { Com.innerHTML = 'Not complete'; Com.parentElement.className = 'ToDos'; }
+    else { Com.innerHTML = 'Complete'; Com.parentElement.className = 'ComToDos';}
 }
 
 let DelEl = function (Del) {
@@ -79,7 +79,26 @@ let DelEl = function (Del) {
     else { alert('ToDo need to be completed!'); }
 }
 
-SrchInpt.onchange = function (e) {
+let ElSort = function (inp) {
+    let Mas1 = Mas.slice();
+    if (inp == 'text') {
+        Mas1 = Mas1.sort(function (a, b) {
+            if (a.text > b.text) return 1;
+            else if (a.text < b.text) return -1;
+            else return 0;
+        });
+    }
+    else if (inp == 'date') {
+        Mas1 = Mas1.sort(function (a, b) {
+            if (a.date > b.date) return 1;
+            else if (a.date < b.date) return -1;
+            else return 0;
+        });
+    }
+    return Mas1;
+}
+
+SrchInpt.oninput = function (e) {
     let inp = SrchInpt.value;
     if ((inp != '') && (e.code = 'Enter')) {
         let Mas1 = [];
@@ -106,23 +125,11 @@ SrchDate.onkeydown = function (e) {
 }
 
 SrtByAlph.onclick = function () {
-    let Mas1 = Mas.slice();
-    Mas1 = Mas1.sort(function (a, b) {
-        if (a.text > b.text) return 1;
-        else if (a.text < b.text) return -1;
-        else return 0;
-    });
-    UpdateList(Mas1);
+    UpdateList(ElSort('text'));
 }
 
 SrtByDate.onclick = function () {
-    let Mas1 = Mas.slice();
-    Mas1 = Mas1.sort(function (a, b) {
-        if (a.date > b.date) return 1;
-        else if (a.date < b.date) return -1;
-        else return 0;
-    });
-    UpdateList(Mas1);
+    UpdateList(ElSort('date'));
 }
 
 SrtReset.onclick = function () {
