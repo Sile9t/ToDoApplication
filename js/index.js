@@ -15,7 +15,12 @@ const EmptyMasMsg = document.createElement('label');
 EmptyMasMsg.innerHTML = 'No elements like this';
 
 let Mas = [];
+if (localStorage.getItem('ToDoList')) {Mas = JSON.parse(localStorage.getItem('ToDoList'));};
 let El;
+
+let MasUpdate = function() {
+    localStorage.setItem('ToDoList', JSON.stringify(Mas)); 
+}
 
 let UpdateList = function (mas) {
     if (list.childElementCount != 0) { list.innerHTML = ''; }
@@ -49,7 +54,10 @@ let AddToList = function (txt, dte) {
     let el = { text: txt, date: dte };
     Mas.push(el);
     UpdateList(Mas);
+    MasUpdate();
 }
+
+form.onload = UpdateList(Mas);
 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -75,6 +83,7 @@ let DelEl = function (Del) {
             else { Mas.pop(); }
         }
         UpdateList(Mas);
+        MasUpdate();
     }
     else { alert('ToDo need to be completed!'); }
 }
