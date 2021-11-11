@@ -104,7 +104,7 @@ let ElSort = function (srtType) {
             else return 0;
         });
     }
-    return Mas1;
+    UpdateList(Mas1);
 }
 
 let Srch = function (e, srchType) {
@@ -136,11 +136,11 @@ SrchDate.onkeydown = function (e) {
 }
 
 SrtByAlph.onclick = function () {
-    UpdateList(ElSort('text'));
+    ElSort('text');
 }
 
 SrtByDate.onclick = function () {
-    UpdateList(ElSort('date'));
+    ElSort('date');
 }
 
 SrtReset.onclick = function () {
