@@ -130,24 +130,24 @@ SrtReset.onclick = function () {
 
 let ElSort = function (srtType) {
     let Mas1 = Mas.slice();
-    // if (srtType == 'text') {
-    //     Mas1 = Mas1.sort(function (a, b) {
-    //         if (a.text > b.text) return 1;
-    //         else if (a.text < b.text) return -1;
-    //         else return 0;
-    //     });
-    // }
-    // else {
-    //     Mas1 = Mas1.sort(function (a, b) {
-    //         if (a.date > b.date) return 1;
-    //         else if (a.date < b.date) return -1;
-    //         else return 0;
-    //     });
-    // }
-    Mas1 = Mas1.sort(function (a, b) {
-        if (a.srtType > b.srtType) return 1;
-        else if (a.srtType < b.srtType) return -1;
-        else return 0;
-    });
+    if (srtType == 'text') {
+        Mas1 = Mas1.sort(function (a, b) {
+            if (a.text > b.text) return 1;
+            else if (a.text < b.text) return -1;
+            else return 0;
+        });
+    }
+    else {
+        Mas1 = Mas1.sort(function (a, b) {
+            if (a.date > b.date) return 1;
+            else if (a.date < b.date) return -1;
+            else return 0;
+        });
+    }
+    // Mas1 = Mas1.sort(function (a, b) {
+    //     if (a.srtType > b.srtType) return 1;
+    //     else if (a.srtType < b.srtType) return -1;
+    //     else return 0;
+    // });
     UpdateList(Mas1);
 }
