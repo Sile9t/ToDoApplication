@@ -25,29 +25,29 @@ let MasUpdate = function () {
 let UpdateList = function (mas) {
     if (list.childElementCount != 0) { list.innerHTML = ''; }
     for (let i = 0; i < mas.length; i++) {
-        let div = document.createElement('div');
-        div.className = 'ToDos';
-        let Num = document.createElement('label');
-        Num.innerHTML = i + 1;
-        let DoText = document.createElement('label');
-        DoText.innerHTML = mas[i].text;
-        let DoDate = document.createElement('label');
-        DoDate.innerHTML = mas[i].date;
-        let ComBtn = document.createElement('button');
-        ComBtn.innerHTML = 'Not complete';
-        ComBtn.id = 'Complete';
-        ComBtn.className = 'ListBtn';
-        let DelBtn = document.createElement('button');
-        DelBtn.innerHTML = 'Delete';
-        DelBtn.id = 'Delete';
-        DelBtn.className = 'ListBtn';
-        div.append(Num);
-        div.append(DoText);
-        div.append(DoDate);
-        div.append(ComBtn);
-        div.append(DelBtn);
-        list.append(div);
+        list.append(Div(i, mas));
     }
+}
+
+let Div = function (iter, mass) {
+    let div = document.createElement('div');
+    div.className = 'ToDos';
+    div.append(Label(iter + 1), Label(mass[iter].text), Label(mass[iter].date), Btn('Not complete', 'Complete'), Btn('Delete', 'Delete'))
+    return div;
+}
+
+let Label = function (inp) {
+    let num = document.createElement('label');
+    num.innerHTML = inp;
+    return num;
+}
+
+let Btn = function (inrTxt, id) {
+    let btn = document.createElement('button');
+    btn.innerHTML = inrTxt;
+    btn.id = id;
+    btn.className = 'ListBtn';
+    return btn;
 }
 
 let AddToList = function (txt, dte) {
@@ -116,19 +116,25 @@ let Srch = function (e, srchType) {
     else { UpdateList(Mas); }
 }
 
+let alFlag = true;
+
 SrtByAlph.onclick = function () {
-    ElSort('text');
+    ElSort('text', alFlag);
+    alFlag = !alFlag;
 }
 
+let dtFlag = true;
+
 SrtByDate.onclick = function () {
-    ElSort('date');
+    ElSort('date', dtFlag);
+    dtFlag = !dtFlag;
 }
 
 SrtReset.onclick = function () {
     UpdateList(Mas);
 }
 
-let ElSort = function (srtType) {
+let ElSort = function (srtType, flag) {
     let Mas1 = Mas.slice();
     if (srtType == 'text') {
         Mas1 = Mas1.sort(function (a, b) {
@@ -144,10 +150,6 @@ let ElSort = function (srtType) {
             else return 0;
         });
     }
-    // Mas1 = Mas1.sort(function (a, b) {
-    //     if (a.srtType > b.srtType) return 1;
-    //     else if (a.srtType < b.srtType) return -1;
-    //     else return 0;
-    // });
-    UpdateList(Mas1);
+    if (flag == true) { UpdateList(Mas1); }
+    else { UpdateList(Mas1.reverse()) }
 }
