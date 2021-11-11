@@ -100,15 +100,8 @@ let Srch = function (e, srchType) {
     let inp = e.target.value;
     if ((inp != '') && (e.code = 'Enter')) {
         let Mas1 = [];
-        if (srchType == 'text') {
-            for (let i = 0; i < Mas.length; i++) {
-                if (Mas[i].text == inp) { Mas1.push(Mas[i]); }
-            }
-        }
-        else {
-            for (let i = 0; i < Mas.length; i++) {
-                if (Mas[i].date == inp) { Mas1.push(Mas[i]); }
-            }
+        for (let i = 0; i < Mas.length; i++) {
+            if (Mas[i][srchType] == inp) { Mas1.push(Mas[i]); }
         }
         if (Mas1 != '') { UpdateList(Mas1); }
         else { UpdateList(Mas1); list.append(EmptyMasMsg); }
@@ -136,20 +129,11 @@ SrtReset.onclick = function () {
 
 let ElSort = function (srtType, flag) {
     let Mas1 = Mas.slice();
-    if (srtType == 'text') {
-        Mas1 = Mas1.sort(function (a, b) {
-            if (a.text > b.text) return 1;
-            else if (a.text < b.text) return -1;
-            else return 0;
-        });
-    }
-    else {
-        Mas1 = Mas1.sort(function (a, b) {
-            if (a.date > b.date) return 1;
-            else if (a.date < b.date) return -1;
-            else return 0;
-        });
-    }
+    Mas1 = Mas1.sort(function (a, b) {
+        if (a[srtType] > b[srtType]) return 1;
+        else if (a[srtType] < b[srtType]) return -1;
+        else return 0;
+    });
     if (flag == true) { UpdateList(Mas1); }
     else { UpdateList(Mas1.reverse()) }
 }
