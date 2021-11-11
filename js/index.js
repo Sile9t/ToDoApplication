@@ -25,34 +25,29 @@ let MasUpdate = function () {
 let UpdateList = function (mas) {
     if (list.childElementCount != 0) { list.innerHTML = ''; }
     for (let i = 0; i < mas.length; i++) {
-        crtDiv(i);
+        let div = document.createElement('div');
+        div.className = 'ToDos';
+        let Num = document.createElement('label');
+        Num.innerHTML = i + 1;
+        let DoText = document.createElement('label');
+        DoText.innerHTML = mas[i].text;
+        let DoDate = document.createElement('label');
+        DoDate.innerHTML = mas[i].date;
+        let ComBtn = document.createElement('button');
+        ComBtn.innerHTML = 'Not complete';
+        ComBtn.id = 'Complete';
+        ComBtn.className = 'ListBtn';
+        let DelBtn = document.createElement('button');
+        DelBtn.innerHTML = 'Delete';
+        DelBtn.id = 'Delete';
+        DelBtn.className = 'ListBtn';
+        div.append(Num);
+        div.append(DoText);
+        div.append(DoDate);
+        div.append(ComBtn);
+        div.append(DelBtn);
         list.append(div);
     }
-}
-
-let crtDiv = function (i) {
-    let div = document.createElement('div');
-    div.className = 'ToDos';
-    let Num = document.createElement('label');
-    Num.innerHTML = i + 1;
-    let DoText = document.createElement('label');
-    DoText.innerHTML = mas[i].text;
-    let DoDate = document.createElement('label');
-    DoDate.innerHTML = mas[i].date;
-    let ComBtn = document.createElement('button');
-    ComBtn.innerHTML = 'Not complete';
-    ComBtn.id = 'Complete';
-    ComBtn.className = 'ListBtn';
-    let DelBtn = document.createElement('button');
-    DelBtn.innerHTML = 'Delete';
-    DelBtn.id = 'Delete';
-    DelBtn.className = 'ListBtn';
-    div.append(Num);
-    div.append(DoText);
-    div.append(DoDate);
-    div.append(ComBtn);
-    div.append(DelBtn);
-    return div;
 }
 
 let AddToList = function (txt, dte) {
@@ -135,19 +130,24 @@ SrtReset.onclick = function () {
 
 let ElSort = function (srtType) {
     let Mas1 = Mas.slice();
-    if (srtType == 'text') {
-        Mas1 = Mas1.sort(function (a, b) {
-            if (a.text > b.text) return 1;
-            else if (a.text < b.text) return -1;
-            else return 0;
-        });
-    }
-    else {
-        Mas1 = Mas1.sort(function (a, b) {
-            if (a.date > b.date) return 1;
-            else if (a.date < b.date) return -1;
-            else return 0;
-        });
-    }
+    // if (srtType == 'text') {
+    //     Mas1 = Mas1.sort(function (a, b) {
+    //         if (a.text > b.text) return 1;
+    //         else if (a.text < b.text) return -1;
+    //         else return 0;
+    //     });
+    // }
+    // else {
+    //     Mas1 = Mas1.sort(function (a, b) {
+    //         if (a.date > b.date) return 1;
+    //         else if (a.date < b.date) return -1;
+    //         else return 0;
+    //     });
+    // }
+    Mas1 = Mas1.sort(function (a, b) {
+        if (a.srtType > b.srtType) return 1;
+        else if (a.srtType < b.srtType) return -1;
+        else return 0;
+    });
     UpdateList(Mas1);
 }
