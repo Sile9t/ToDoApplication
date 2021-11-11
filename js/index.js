@@ -15,11 +15,11 @@ const EmptyMasMsg = document.createElement('label');
 EmptyMasMsg.innerHTML = 'No elements like this';
 
 let Mas = [];
-if (localStorage.getItem('ToDoList')) {Mas = JSON.parse(localStorage.getItem('ToDoList'));};
+if (localStorage.getItem('ToDoList')) { Mas = JSON.parse(localStorage.getItem('ToDoList')); };
 let El;
 
-let MasUpdate = function() {
-    localStorage.setItem('ToDoList', JSON.stringify(Mas)); 
+let MasUpdate = function () {
+    localStorage.setItem('ToDoList', JSON.stringify(Mas));
 }
 
 let UpdateList = function (mas) {
@@ -73,7 +73,7 @@ list.onclick = function (e) {
 
 let ChangeCom = function (Com) {
     if (Com.innerHTML == 'Complete') { Com.innerHTML = 'Not complete'; Com.parentElement.className = 'ToDos'; }
-    else { Com.innerHTML = 'Complete'; Com.parentElement.className = 'ComToDos';}
+    else { Com.innerHTML = 'Complete'; Com.parentElement.className = 'ComToDos'; }
 }
 
 let DelEl = function (Del) {
@@ -97,7 +97,7 @@ let ElSort = function (srtType) {
             else return 0;
         });
     }
-    else if (srtType == 'date') {
+    else {
         Mas1 = Mas1.sort(function (a, b) {
             if (a.date > b.date) return 1;
             else if (a.date < b.date) return -1;
@@ -107,12 +107,19 @@ let ElSort = function (srtType) {
     return Mas1;
 }
 
-SrchInpt.oninput = function (e) {
-    let inp = SrchInpt.value;
+let Srch = function (e, srchType) {
+    let inp = e.target.value;
     if ((inp != '') && (e.code = 'Enter')) {
         let Mas1 = [];
-        for (let i = 0; i < Mas.length; i++) {
-            if (Mas[i].text == inp) { Mas1.push(Mas[i]); }
+        if (srchType == 'text') {
+            for (let i = 0; i < Mas.length; i++) {
+                if (Mas[i].text == inp) { Mas1.push(Mas[i]); }
+            }
+        }
+        else {
+            for (let i = 0; i < Mas.length; i++) {
+                if (Mas[i].date == inp) { Mas1.push(Mas[i]); }
+            }
         }
         if (Mas1 != '') { UpdateList(Mas1); }
         else { UpdateList(Mas1); list.append(EmptyMasMsg); }
@@ -120,17 +127,12 @@ SrchInpt.oninput = function (e) {
     else { UpdateList(Mas); }
 }
 
+SrchInpt.oninput = function (e) {
+    Srch(e, 'text');
+}
+
 SrchDate.onkeydown = function (e) {
-    let inp = SrchDate.value;
-    if ((inp != '') && (e.code == 'Enter')) {
-        let Mas1 = [];
-        for (let i = 0; i < Mas.length; i++) {
-            if (Mas[i].date == inp) { Mas1.push(Mas[i]); }
-        }
-        if (Mas1 != '') { UpdateList(Mas1); }
-        else { UpdateList(Mas1); list.append(EmptyMasMsg); }
-    }
-    else { UpdateList(Mas); }
+    Srch(e, 'date');
 }
 
 SrtByAlph.onclick = function () {
