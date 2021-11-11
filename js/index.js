@@ -25,29 +25,34 @@ let MasUpdate = function () {
 let UpdateList = function (mas) {
     if (list.childElementCount != 0) { list.innerHTML = ''; }
     for (let i = 0; i < mas.length; i++) {
-        let div = document.createElement('div');
-        div.className = 'ToDos';
-        let Num = document.createElement('label');
-        Num.innerHTML = i + 1;
-        let DoText = document.createElement('label');
-        DoText.innerHTML = mas[i].text;
-        let DoDate = document.createElement('label');
-        DoDate.innerHTML = mas[i].date;
-        let ComBtn = document.createElement('button');
-        ComBtn.innerHTML = 'Not complete';
-        ComBtn.id = 'Complete';
-        ComBtn.className = 'ListBtn';
-        let DelBtn = document.createElement('button');
-        DelBtn.innerHTML = 'Delete';
-        DelBtn.id = 'Delete';
-        DelBtn.className = 'ListBtn';
-        div.append(Num);
-        div.append(DoText);
-        div.append(DoDate);
-        div.append(ComBtn);
-        div.append(DelBtn);
+        crtEl(i);
         list.append(div);
     }
+}
+
+let crtEl = function (i) {
+    let div = document.createElement('div');
+    div.className = 'ToDos';
+    let Num = document.createElement('label');
+    Num.innerHTML = i + 1;
+    let DoText = document.createElement('label');
+    DoText.innerHTML = mas[i].text;
+    let DoDate = document.createElement('label');
+    DoDate.innerHTML = mas[i].date;
+    let ComBtn = document.createElement('button');
+    ComBtn.innerHTML = 'Not complete';
+    ComBtn.id = 'Complete';
+    ComBtn.className = 'ListBtn';
+    let DelBtn = document.createElement('button');
+    DelBtn.innerHTML = 'Delete';
+    DelBtn.id = 'Delete';
+    DelBtn.className = 'ListBtn';
+    div.append(Num);
+    div.append(DoText);
+    div.append(DoDate);
+    div.append(ComBtn);
+    div.append(DelBtn);
+    return div;
 }
 
 let AddToList = function (txt, dte) {
@@ -88,23 +93,12 @@ let DelEl = function (Del) {
     else { alert('ToDo need to be completed!'); }
 }
 
-let ElSort = function (srtType) {
-    let Mas1 = Mas.slice();
-    if (srtType == 'text') {
-        Mas1 = Mas1.sort(function (a, b) {
-            if (a.text > b.text) return 1;
-            else if (a.text < b.text) return -1;
-            else return 0;
-        });
-    }
-    else {
-        Mas1 = Mas1.sort(function (a, b) {
-            if (a.date > b.date) return 1;
-            else if (a.date < b.date) return -1;
-            else return 0;
-        });
-    }
-    UpdateList(Mas1);
+SrchInpt.oninput = function (e) {
+    Srch(e, 'text');
+}
+
+SrchDate.onkeydown = function (e) {
+    Srch(e, 'date');
 }
 
 let Srch = function (e, srchType) {
@@ -127,14 +121,6 @@ let Srch = function (e, srchType) {
     else { UpdateList(Mas); }
 }
 
-SrchInpt.oninput = function (e) {
-    Srch(e, 'text');
-}
-
-SrchDate.onkeydown = function (e) {
-    Srch(e, 'date');
-}
-
 SrtByAlph.onclick = function () {
     ElSort('text');
 }
@@ -145,4 +131,23 @@ SrtByDate.onclick = function () {
 
 SrtReset.onclick = function () {
     UpdateList(Mas);
+}
+
+let ElSort = function (srtType) {
+    let Mas1 = Mas.slice();
+    if (srtType == 'text') {
+        Mas1 = Mas1.sort(function (a, b) {
+            if (a.text > b.text) return 1;
+            else if (a.text < b.text) return -1;
+            else return 0;
+        });
+    }
+    else {
+        Mas1 = Mas1.sort(function (a, b) {
+            if (a.date > b.date) return 1;
+            else if (a.date < b.date) return -1;
+            else return 0;
+        });
+    }
+    UpdateList(Mas1);
 }
