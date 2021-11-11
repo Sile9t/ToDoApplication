@@ -25,12 +25,12 @@ let MasUpdate = function () {
 let UpdateList = function (mas) {
     if (list.childElementCount != 0) { list.innerHTML = ''; }
     for (let i = 0; i < mas.length; i++) {
-        crtEl(i);
+        crtDiv(i);
         list.append(div);
     }
 }
 
-let crtEl = function (i) {
+let crtDiv = function (i) {
     let div = document.createElement('div');
     div.className = 'ToDos';
     let Num = document.createElement('label');
