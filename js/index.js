@@ -32,7 +32,7 @@ let UpdateList = function (mas) {
 let Div = function (iter, mass) {
     let div = document.createElement('div');
     div.className = 'ToDos';
-    div.append(Label(iter + 1), Label(mass[iter].text), Label(mass[iter].date), Btn('Not complete', 'Complete'), Btn('Delete', 'Delete'))
+    div.append(Label(iter + 1), Label(mass[iter].text), Label(mass[iter].date), Btn('Not complete', 'Complete'), Btn('Delete', 'Delete'));
     return div;
 }
 
